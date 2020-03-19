@@ -1,0 +1,114 @@
+<html>
+
+<head>
+  <title>Nexmo SMS App</title>
+  <link rel='stylesheet' type='text/css' href='https://static.freshdev.io/fdk/2.0/assets/freshdesk.css'>
+
+
+  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+ <link rel="stylesheet" type="text/css" href="./assets/iparams.css">
+  <style>
+    /* Put your custom style here */
+  </style>
+</head>
+
+<body>
+  <div class="row errmsg">
+    <div class="col-md-1">
+      <i class="fa fa-times-circle icircle"></i>
+      <i class="fa fa-check-circle icircle hide success"></i>
+    </div>
+    <div class="col-md-10" id="errorMessage" style="font-size: 14px;"></div>
+    <div class="col-md-1">
+      <i class="fa fa-times" id="closeError"></i>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row resetAPI">
+      <div class="col-md-12">
+        <a id="resetKey">Reset API Key</a>
+      </div>
+
+    </div>
+
+    <div class="row loginSection">
+      <div class="col-md-12 col-sm-12">
+        <label>
+          Freshdesk URL :
+        </label>
+        <input class="fdinput" type="text" id="fdurl" placeholder="https://domain.freshdesk.com" />
+      </div>
+      <div class="col-md-12 col-sm-12">
+        <label>
+          Freshdesk API Key:
+        </label>
+        <input class="fdinput" type="text" id="api_key" placeholder="API Key" />
+      </div>
+      <div class="col-md-12 btnSection">
+        <button type="button" class="btn btn-primary" id="verifyFreshdesk">Verify Freshdesk Account</button>
+      </div>
+    </div>
+
+   
+    <div class="row mainContainer container-fluid hide">
+       <!-- Your code goes here -->
+    </div>
+    <br>
+    <br>
+  </div>
+  <script type="text/javascript">
+    function getConfigs(configs) {
+      savedIparams = configs;
+      $("#fdurl").val(savedIparams.fdurl);
+      $("#api_key").val(savedIparams.api_key);
+      $("#verifyFreshdesk").trigger("click");
+    };
+
+    function validate() {
+
+      validation = 1;
+      if ($("#fdurl").val().length <= 14 && $("#api_key").val().length < 5) {
+        showErrorMessage("e", "Invalid Credentials");
+        return false;
+      }
+      if (validation) {
+        return true;
+      }
+      showErrorMessage("e", "Something went wrong");
+      return false;
+
+    };
+
+    function postConfigs() {
+      return {
+        __meta: {
+          secure: ["api_key"]
+        },
+        fdurl: $("#fdurl").val(),
+        api_key: $("#api_key").val()
+      }
+    };
+    $(document).ready(function () {
+      window.validation = 1;
+
+      app.initialized().then(function (client) {
+        iclient = client;
+      }).catch(function (er) {
+        console.log(er);
+      });
+      elementEvents();
+    });
+  </script>
+  <script src="./assets/iparams.js"></script>
+</body>
+
+</html>
