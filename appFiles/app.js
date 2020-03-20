@@ -26,3 +26,8 @@ function getAllDataAPIDetails() {
     dataAPI.push(client.data.get("loggedInUser"));
     return dataAPI;
 }
+
+
+function showNotify(type, message) {
+    client.interface.trigger("showNotify", { type: type, message: message });
+}
