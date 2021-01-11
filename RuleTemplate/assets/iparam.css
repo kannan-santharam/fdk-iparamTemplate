@@ -1,0 +1,650 @@
+body {
+    font-size: 14px;
+    background-color: #FAFAFA;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+label,
+.labels {
+    font-size: 14px;
+    color: #475867;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+h3 {
+    color: #12344D;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+h4,
+.text {
+    color: #12344D;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.row {
+    width: 100%;
+}
+
+h5 {
+    color: #475867;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+input[type='radio'] {
+    margin-right: 3px;
+    border: 0;
+    height: 9px;
+}
+
+input[type='radio']:hover {
+    border: 0;
+}
+
+input[type='radio']:checked:before {
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    background-color: #2E6ED8;
+    border: solid 1px #2E6ED8;
+}
+
+input[type='radio']:checked {
+    border: 0 !important;
+    background-color: transparent !important;
+}
+
+input[type='radio']:before {
+    height: 14px;
+    width: 14px;
+    border: 1px solid #6C7684;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    box-shadow: inset 0 1px 2px 0 #F7F9FA;
+}
+
+.resetAPI {
+    display: none;
+}
+
+.resetAPI {
+    padding: 0px 20px 15px 0;
+    position: fixed;
+    right: 0;
+    z-index: 99;
+    width: 100%;
+    text-align: right;
+    background-color: #fafafa;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
+    border-bottom: 1px solid #eee;
+    margin: 0;
+}
+
+.resetAPI a {
+    color: #2C5CC5 !important;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.resetAPI button#newReward {
+    margin-left: 20px;
+}
+
+.fdinput {
+    box-sizing: border-box;
+    border: 1px solid #CFD7DF;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: inset 0 1px 2px 0 rgba(24, 50, 71, 0.05);
+    padding: 5px 12px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+textarea.fdinput {
+    min-height: 210px;
+    resize: vertical;
+}
+
+.fdinput:hover,
+.select2-selection:hover {
+    border: 1px solid #475867 !important;
+    transition: .2s linear;
+}
+
+.fdinput:focus {
+    outline: 0 !important;
+    background: #fff;
+    border: 1px solid transparent !important;
+    box-shadow: 0 0 0 2px #2c5cc5 !important;
+}
+
+.btn {
+    font-size: 14px;
+    text-transform: none;
+}
+
+.btnSection {
+    text-align: center;
+    padding: 22px;
+}
+
+.btn-primary {
+    box-sizing: border-box;
+    height: 33px;
+    border: 1px solid #12344D;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #264966 0%, #12344D 100%);
+    box-shadow: 0 1px 0 0 rgba(24, 50, 71, 0.05);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: center;
+    padding: 6px 10px;
+}
+
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+    outline: 0 !important;
+    background-color: #174262 !important;
+    border: 1px solid #174262 !important;
+    transition: .1s linear;
+}
+
+.errmsg {
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(18, 52, 77, 0.06), 0 2px 16px 0 rgba(18, 52, 77, 0.16);
+    padding: 10px 10px 10px 0;
+    min-width: 370px;
+    max-width: 450px;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: -100%;
+    border-top: 3px solid #E43538;
+    transition: .3s;
+}
+
+.errmsg.success {
+    border-top: 3px solid #5cb85c !important;
+}
+
+.errmsg i.icircle {
+    font-size: 25px;
+    color: #E43538;
+    right: -8px;
+}
+
+.errmsg i.icircle.success {
+    color: #00A886;
+}
+
+.errmsg i.fa-times {
+    right: 7px;
+    padding: 2px 5px;
+}
+
+.errmsg i.fa-times:hover {
+    background-color: #EBEFF3;
+    border-radius: 4px;
+}
+
+.errmsg i {
+    top: 50%;
+    position: absolute;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+
+/* Select2 css start*/
+
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container .select2-selection--multiple {
+    border: 1px solid #CFD7DF !important;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px 0 rgba(24, 50, 71, 0.05) !important;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+    display: block !important;
+}
+
+.select2-container li.select2-selection__choice {
+    padding: 4px 6px 4px 9px !important;
+    color: #12344D !important;
+    border-radius: 4px !important;
+    background-color: #EBEFF3 !important;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    border: 0 !important;
+    margin: 4px 5px 4px 0;
+}
+
+.select2-container--focus .select2-selection,
+.select2-container--open .select2-selection {
+    outline: 0 !important;
+    background: #fff;
+    border: 1px solid transparent !important;
+    box-shadow: 0 0 0 2px #2c5cc5 !important;
+    border-radius: 4px !important;
+}
+
+.select2-container span.select2-selection__choice__remove {
+    float: right;
+    margin: 0 0 0 12px !important;
+    font-size: 17px;
+    color: #183247 !important;
+    position: relative;
+    top: -1px;
+    left: 0px;
+}
+
+.select2-container span.select2-dropdown {
+    border: 0;
+    padding: 8px;
+    box-shadow: 0 2px 18px 0 rgba(18, 52, 77, .16), 0 2px 4px 0 rgba(18, 52, 77, .06);
+}
+
+.select2-container .select2-results__option[aria-selected=true] {
+    background-color: #e5f2fd;
+    color: #2c5cc5 !important;
+    font-weight: 600;
+}
+
+.select2-container li.select2-results__option {
+    cursor: pointer;
+    padding: 6px 30px 7px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    line-height: 1.3;
+    margin: 5px 0;
+}
+
+.select2-container .select2-results__option--highlighted[aria-selected] {
+    background-color: #ebeff2;
+    color: rgb(24, 50, 71) !important;
+}
+
+span.select2-dropdown {
+    padding: 8px;
+    border: 0 !important;
+    box-shadow: 0 2px 18px 0 rgba(18, 52, 77, .16), 0 2px 4px 0 rgba(18, 52, 77, .06);
+    border-radius: 4px !important;
+    position: relative;
+    top: 2px;
+}
+
+.select2-container .select2-search__field {
+    box-sizing: border-box;
+    border: 1px solid #CFD7DF;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: inset 0 1px 2px 0 rgba(24, 50, 71, 0.05);
+    margin-top: 5px;
+}
+
+.select2-container .select2-search__field:hover {
+    border: 1px solid #475867 !important;
+    transition: .2s linear;
+}
+
+.select2-container .select2-search__field:focus {
+    outline: 0 !important;
+    background: #fff;
+    border: 1px solid transparent !important;
+    box-shadow: 0 0 0 2px #2c5cc5 !important;
+}
+
+.select2-selection--multiple .select2-search__field:focus {
+    box-shadow: 0 0 0 0 !important;
+}
+
+.select2-selection--single {
+    height: 32px !important;
+    border: 1px solid #CFD7DF !important;
+    border-radius: 4px !important;
+    background-color: #FFFFFF !important;
+    box-shadow: inset 0 1px 2px 0 rgba(24, 50, 71, 0.05);
+}
+
+.select2-selection--single .select2-selection__arrow {
+    top: 4px !important;
+    right: 5px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 31px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #12344D;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/*Select2 css end*/
+
+.fa#removeGroup {
+    color: #E43538;
+    cursor: pointer;
+}
+
+.mainContainer {
+    margin: 37px auto 30px;
+    width: 100%;
+}
+
+.mainContainer .inputdiv {
+    margin-top: 10px;
+}
+
+.dib {
+    display: inline-block;
+}
+
+.inputdiv .addGroup {
+    margin: 20px 0 30px 30px;
+    background-color: #03b874;
+    border: 1px solid;
+    border-radius: 2px;
+    color: #fff;
+    padding: 6px 0px;
+    width: 190px;
+    cursor: pointer;
+}
+
+.inputdiv .pcm .gaConfigure {
+    margin-top: 10px;
+}
+
+.labelName {
+    font-size: 12px;
+}
+
+.mainContainer .tabView {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tabView .tab {
+    padding: 15px 10px;
+    cursor: pointer;
+    border-bottom: 2px solid #ccc;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.tabView .tab.active,
+.tabView .tab.active svg {
+    /* color: #fff;
+    background-color: rgba(0, 112, 210, 1); */
+    border-color: rgba(0, 112, 210, 1);
+    color: rgba(0, 112, 210, 1);
+    fill: rgba(0, 112, 210, 1);
+}
+
+.gsSection .col-md-6 {
+    padding: 10px 0;
+}
+
+.generalSettings,
+.saleforceSection {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.gsAccordion {
+    display: block;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.gsAccordion h3,
+.saleforceSection h3 {
+    color: #444;
+    font-size: 20px;
+}
+
+.tabView .fa-cog {
+    font-size: 18px;
+    position: relative;
+    top: 2px;
+}
+
+
+/*template css*/
+
+.autocreateRule .removeOption {
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px !important;
+    width: 16px;
+    height: 16px;
+    fill: #12344d;
+    position: absolute;
+    right: 20px;
+    display: none;
+}
+
+.autocreateRule .header:hover>.removeOption {
+    display: block;
+}
+
+.fieldmapping .removeFieldOption {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    fill: #12344d;
+    position: absolute;
+    right: 25px;
+    top: -14px;
+    display: none;
+}
+
+.fieldmapping .addOptionDiv .header:hover svg.removeFieldOption {
+    display: block !important;
+}
+
+.addOption i {
+    color: rgb(44, 92, 197);
+}
+
+.addOptionChoices {
+    padding: 12px 16px;
+    border-top: 1px solid #dadfe3;
+    background-color: #fff;
+    color: #183247;
+    font-size: 14px;
+    border-radius: 0 0 4px 4px;
+}
+
+.addOption {
+    cursor: pointer;
+}
+
+.counter {
+    box-shadow: 0 2px 4px 0 rgba(18, 52, 77, .06);
+    border: 1px solid #ebeff3;
+    width: 99%;
+    margin: 20px 0;
+    position: relative;
+    border-radius: 4px;
+}
+
+.counter .header {
+    background-color: #f5f7f9;
+    padding: 15px 20px;
+    cursor: pointer;
+    margin: initial;
+}
+
+#choices {
+    margin: 20px 10px !important;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.heading {
+    padding: 10px;
+    border-bottom: 1px solid #dadfe3;
+    background: white;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.parentSelector,
+.childSelector {
+    padding: 10px;
+}
+
+.parentSelect {
+    width: 100%;
+    box-shadow: 0px 1px 5px 0px #eee;
+    font-size: 13px;
+    ;
+}
+
+.childSelect {
+    width: 92%;
+    margin-left: 47px;
+    box-shadow: 0px 1px 5px 0px #eee;
+    font-size: 13px;
+}
+
+.firstLevel,
+.secondLevel,
+.thirdLevel {
+    width: 88%
+}
+
+.sideBySide {
+    display: inline-block;
+}
+
+.ifText {
+    font-size: initial;
+    text-align: left;
+    padding: 13px;
+    padding-right: 0px;
+    color: gray;
+    max-width: 30px !important;
+}
+
+.removeRule {
+    position: relative;
+    left: 96%;
+    font-size: 18px;
+    margin-top: -20px;
+    color: #d9534f;
+    /* z-index: 99999; */
+    cursor: pointer;
+    text-align: right;
+}
+
+.sendTemplate {
+    padding: 10px;
+}
+
+.templateName {
+    width: 81%;
+    font-size: 11px;
+}
+
+.sendTemplateLabel {
+    position: relative;
+    top: 15px;
+    right: -12px;
+    text-align: right;
+}
+
+.heading label {
+    cursor: pointer;
+    padding-left: 20px;
+    margin-right: 20px;
+    color: #183247;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.addOptionDiv .space-between {
+    padding: 7px 0;
+    transition: all .3s;
+    background-color: #f5f7f9;
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.border-bottom {
+    border-bottom: 1px #cfd7df solid;
+}
+
+.addOptionDiv .separator .match-operator {
+    position: absolute;
+    padding: 2px 0;
+    top: -5px;
+    width: 52px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    border: 1px solid #dadfe3;
+    border-radius: 16px;
+    background-color: #fff;
+    z-index: 9;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .2px;
+    text-transform: uppercase;
+}
+
+.addOptionDiv .separator.space-between:last-child {
+    display: none;
+}
+
+.fieldmapping .heading div.col-md-6 {
+    font-weight: 600;
+    color: #333;
+}
+
+.fieldmapping .addOptionDiv .header {
+    padding: 2px 10px !important;
+    border-bottom: 1px solid #cfd7df;
+}
+
+
+/*template css end */
