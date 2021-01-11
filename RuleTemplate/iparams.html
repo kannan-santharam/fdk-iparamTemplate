@@ -1,0 +1,203 @@
+<html>
+
+<head>
+  <title>Show Fields</title>
+  <link rel='stylesheet' type='text/css' href='https://static.freshdev.io/fdk/2.0/assets/freshdesk.css'>
+  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./assets/iparams.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row errmsg">
+      <div class="col-md-1">
+        <i class="fa fa-times-circle icircle"></i>
+        <i class="fa fa-check-circle icircle hide success"></i>
+      </div>
+      <div class="col-md-10" id="errorMessage" style="font-size: 14px;"></div>
+      <div class="col-md-1">
+        <i class="fa fa-times" id="closeError"></i>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row resetAPI">
+        <div class="col-md-12">
+          <a id="resetKey">Change API Key</a>
+        </div>
+  
+      </div>
+    <div class="row loginSection">
+      <div class="col-md-12 col-sm-12">
+        <label>
+          Freshdesk URL :
+        </label>
+        <input class="fdinput" type="text" id="fdurl" placeholder="https://domain.freshdesk.com" />
+      </div>
+      <div class="col-md-12 col-sm-12">
+        <label>
+          Freshdesk API Key:
+        </label>
+        <input class="fdinput" type="text" id="api_key" placeholder="API Key" />
+      </div>
+      <div class="col-md-12 btnSection">
+        <button type="button" class="btn btn-primary" id="verifyFreshdesk">Verify Freshdesk Account</button>
+      </div>
+    </div>
+    <div class="row mainContainer container-fluid">
+
+      <div class="sfSection row">
+        <div class="col-md-12 autocreateRule">
+          <label>
+          </label>
+          <div class="autocreateRules">
+            <div class="rules">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="addRule">
+        <button class="btn btn-primary" id="addAnotherRule">Add another rule</button>
+      </div>
+      <br>
+      <br>
+    </div>
+    <script type="text/template" id="addOptionTemplate">
+            <div class="counter rulemapping">
+
+                <div class="heading">
+                    <label>
+                     <input type="radio" name="orAnd" id="matchAny" /> Match <b>ANY</b> of the below
+                   </label>
+                    <label>
+                      <input type="radio" checked name="orAnd" id="matchAll"/> Match <b>ALL</b> of the below
+                    </label>
+
+                </div>
+                <div class="addOptionDiv">
+                </div>
+                <div class="addOptionChoices">
+                    <div class="addOption">
+                        <i class="fa fa-plus-circle"></i> Add new condition
+                    </div>
+                </div>
+                <div class="fieldsListSection">
+                  <p>Show the below fields</p>
+                  <select multiple class="fieldsList"></select>
+                </div>
+            </div>
+        </script>
+    <script type="text/template" id="rowHeaderTemplate">
+            <div class="row header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="32" viewBox="0 0 27 32" class="removeOption app-icon app-icon--smallsecondary mt-5"><path d="M24.988 7.314v22.4A2.28 2.28 0 0122.716 32H4.543a2.279 2.279 0 01-2.272-2.286v-22.4h-.909c-.753 0-1.363-.614-1.363-1.371s.61-1.371 1.363-1.371h5.452V2.286A2.28 2.28 0 019.086 0h9.086a2.279 2.279 0 012.272 2.286v2.286h5.452c.753 0 1.363.614 1.363 1.371s-.61 1.371-1.363 1.371h-.909zm-19.99 0v21.943h17.264V7.314H4.998zm12.266 2.972c.753 0 1.363.614 1.363 1.371v13.257c0 .757-.61 1.371-1.363 1.371s-1.363-.614-1.363-1.371V11.657c0-.757.61-1.371 1.363-1.371zm-6.815 0c.753 0 1.363.614 1.363 1.371v13.257c0 .757-.61 1.371-1.363 1.371s-1.363-.614-1.363-1.371V11.657c0-.757.61-1.371 1.363-1.371zm-.908-5.715h8.178V2.742H9.541v1.829z"></path></svg>
+                <div class="col-md-1 ifText">if</div>
+                <div class="col-md-4 col-sm-4 col-xs-4 parentSelector">
+                    <select class="parentSelect">
+                      <option val=0>--</option>
+                  </select>
+                </div>
+                <div class="col-md-1 col-sm-0 col-xs-0 ifText">is</div>
+                <div class="col-md-6 col-sm-6 col-xs-6 childSelector">
+                </div>
+            </div>
+            <div class="separator space-between">
+                <div class="border-bottom">
+                    <div class="match-operator text--uppercase text--xsmall text--extra-bold text--antialias">
+                        AND
+                    </div>
+                </div>
+            </div>
+        </script>
+    <script type="text/template" id="rowHeaderTemplate">
+          <div class="row header rowHeaderTemplaterow">
+                 <div class="col-md-1 col-sm-1 col-xs-1">
+                    <i class="fa fa-minus-circle removeOption"></i>
+                    <!-- <div  class="col-md-0 col-sm-0 col-xs-0 ifText">if</div> -->
+                 </div>
+                   <div class="col-md-4 col-sm-4 col-xs-4 parentSelectorAND">
+                      <select class="parentSelectAND">
+                          <option val=0>--</option>
+                      </select>
+                  </div>
+                  <!-- <div  class="col-md-0 col-sm-0 col-xs-0 ifText">is</div> -->
+                  <div class="col-md-7 col-sm-7 col-xs-7 childSelectorAND">
+                     
+                      <!-- <select class="childSelectAND" multiple="multiple">
+                          <option val=0>--</option>
+                      </select> -->
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12 childSelectorDependentAND"></div>
+              </div>
+        </script>
+    <script type="text/javascript">
+      function getConfigs(configs) {
+
+      };
+
+      function validate() {
+        return true;
+      };
+
+      function postConfigs() {
+        
+        var rules = [];
+        $.each($(".counter"), function (index, value) {
+          var configs = {
+            conditions: {
+              nested: []
+            }
+          };
+          configs["fields"] = $(value).find(".fieldsListSection select").val().join();
+          let isOrCondition = $(value).find(".heading #matchAny").first().is(":checked");
+          isOrCondition ? configs["action"] = "OR" : configs["action"] = "AND";
+
+          $.each($(value).find(".addOptionDiv .header"), function (ind, headers) {
+            let parentSelect = $(headers).find(".parentSelect").val();
+            let childSelect = $(headers).find(".childSelect").val();
+
+            if ($(headers).find(".childSelect").data("type") === "nested") {
+              let nestedObj = {};
+
+              let secondLevelId = $(headers).find(".secondLevelLabel").attr("id");
+              let secondLevelValue = $(headers).find(".secondLevel").val();
+              let thirdLevelId = $(headers).find(".thirdLevelLabel").attr("id");
+              let thridLevelValue = $(headers).find(".thirdLevel").val();
+              nestedObj[parentSelect] = childSelect;
+              nestedObj[secondLevelId] = secondLevelValue;
+              nestedObj[thirdLevelId] = thridLevelValue.join();
+              configs["conditions"]["nested"].push(nestedObj)
+
+            } else {
+              configs["conditions"][parentSelect] = childSelect.join();
+            }
+          });
+          rules.push(configs)
+        })
+        return {
+          __meta: {
+            secure: ["api_key"]
+          },
+          rules
+        };
+
+      };
+    </script>
+
+    <script src="./assets/iparams.js"></script>
+
+</body>
+
+</html>
